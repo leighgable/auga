@@ -1,0 +1,35 @@
+[project]
+name = "auga"
+version = "0.1.0"
+description = "positive cloned-state cognitive graphs"
+requires-python = ">=3.12"
+dependencies = [
+    "torch",
+    "torchvision",
+    "treescope",
+    "ipykernel>=7.2.0",
+    "jupyter>=1.1.1",
+    "ipython>=9.12.0",
+    "einops>=0.8.2",
+    "scipy>=1.17.1",
+    "plotly>=6.7.0",
+    "typer>=0.25.1",
+    "gymnasium>=1.3.0",
+    "pytest>=9.1.1",
+    "faiss-cpu>=1.14.3",
+    "ale-py>=0.12.0",
+    "autorom>=0.6.1",
+]
+
+[project.scripts]
+auga = "cli:app"
+
+[build-system]
+requires = ["uv_build>=0.11.0,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "nanobind>=2.13.0",
+]
+
