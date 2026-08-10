@@ -125,6 +125,7 @@
                       ) (old.passthru.dependencies or { });
                     };
                   });
+
               torchvision =
                 (hacks.nixpkgsPrebuilt {
                   from = pkgs.python314Packages.torchvision;
@@ -168,6 +169,7 @@
             packages = [
               virtualenv
               pkgs.SDL2
+              pkgs.ffmpeg
               pkgs.sdl3
               pkgs.uv
               pkgs.perf
@@ -196,6 +198,10 @@
                 export HF_TOKEN=$(cat "$REPO_ROOT/token")
               fi
               export PYTHONPATH="$REPO_ROOT/src"
+
+              # ... existing hook ...
+              export LD_LIBRARY_PATH="${pkgs.python314Packages.torchWithoutCuda}/lib/python3.14/site-packages/torch/lib:${pkgs.ffmpeg.lib}/lib:$LD_LIBRARY_PATH"
+
             '';
           };
         }
