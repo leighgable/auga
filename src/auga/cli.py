@@ -89,7 +89,10 @@ def rendered_to_frames(rendered: torch.Tensor) -> list[torch.Tensor]:
     )
     return [flat[i] for i in range(flat.shape[0])]
 
-
+@app.command()
+def list_envs() -> list[str]:
+    print(list(gym.envs.registry.keys()), sep=",", end=" ")
+    
 @app.command()
 def run(
     game: str = typer.Option(
